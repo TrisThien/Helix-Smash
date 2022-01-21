@@ -817,7 +817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 150
   rings:
-  - {fileID: 1588319006905172645, guid: c7b8fcfd94729e94e8e8d9fcf39fdf1f, type: 3}
+  - {fileID: 1973577589321559079, guid: 201dcc90fe0efec45aea9cf6789de54a, type: 3}
   - {fileID: 2588249542071728973, guid: ea47e25f658516a46b21c5a84ae2c64f, type: 3}
   ringsDistance: 1
   ringsNum: 18

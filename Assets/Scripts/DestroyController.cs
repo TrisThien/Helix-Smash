@@ -9,7 +9,7 @@ public class DestroyController : MonoBehaviour
         {
             Debug.Log("va cham");
             time++;
-            if (time == 2)
+            if (time == 1)
             {
                 Destroy(this.gameObject);
             }
