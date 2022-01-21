@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-    public GameObject[] rings;
-    public float ringsDistance;
-    public int ringsNum = 0;
+    [SerializeField] private float rotationSpeed;
+    
+    [SerializeField] private GameObject[] rings;
+    [SerializeField] private float ringsDistance;
+    [SerializeField] private int ringsNum = 0;
     void Start()
     {
         for (int i = 0; i < ringsNum; i++)
@@ -12,6 +14,10 @@ public class TowerController : MonoBehaviour
             NewRings(Random.Range(0, rings.Length-1));
         }
         NewRings(rings.Length - 1);
+    }
+    void Update()
+    {
+        transform.Rotate(0, rotationSpeed * Time.smoothDeltaTime, 0);
     }
     private void NewRings(int ringIndex)
     {
