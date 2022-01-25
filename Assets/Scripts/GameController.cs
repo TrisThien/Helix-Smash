@@ -1,29 +1,47 @@
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public static bool gameOver;
-    public static bool youWin;
-    public GameObject losePanel;
-    public GameObject winPanel;
+    [SerializeField] private Text level;
+    public static int Levelnum = 1;
+    public static bool GameOver;
+    public static bool YouWin;
+    [SerializeField] private GameObject levelPanel;
+    [SerializeField] private GameObject losePanel;
+    [SerializeField] private GameObject winPanel;
 
-    void Start()
+    private void Start()
     {
-        gameOver = false;
-        youWin = false;
+        GameOver = false;
+        YouWin = false;
     }
 
-    void Update()
+    private void Update()
     {
-        if (gameOver)
+        level.text = "LEVEL: " + Levelnum.ToString();
+
+        if (GameOver)
         {
             Time.timeScale = 0;
+            levelPanel.SetActive(false);
             losePanel.SetActive(true);
         }
-        if (youWin)
+        if (YouWin)
         {
+            levelPanel.SetActive(false);
             winPanel.SetActive(true);
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void NextGame()
+    {
+        Levelnum++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

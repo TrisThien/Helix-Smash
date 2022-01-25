@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2521095864927345684}
   m_Layer: 0
   m_Name: arc_6
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -61,14 +61,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b0bf92795dd5843a9b8188aa7d77c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroyable: 0
+  isDestroyable: 1
   rb:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6189747330316253438}
+  - {fileID: 8022224600352950269}
+  - {fileID: 6504186611779074877}
+  - {fileID: 700858418579788321}
+  - {fileID: 8346725165697414020}
+  - {fileID: 9066544525571152116}
 --- !u!1 &3326889991376961243
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 3179000267833712377}
   m_Layer: 0
   m_Name: arc_6 (3)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -226,14 +226,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b0bf92795dd5843a9b8188aa7d77c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroyable: 0
+  isDestroyable: 1
   rb:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6189747330316253438}
+  - {fileID: 8022224600352950269}
+  - {fileID: 6504186611779074877}
+  - {fileID: 700858418579788321}
+  - {fileID: 8346725165697414020}
+  - {fileID: 9066544525571152116}
 --- !u!1 &3326889991414821947
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 6779787533269991677}
   m_Layer: 0
   m_Name: arc_6 (2)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,7 +411,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -427,14 +427,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b0bf92795dd5843a9b8188aa7d77c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroyable: 0
+  isDestroyable: 1
   rb:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6189747330316253438}
+  - {fileID: 8022224600352950269}
+  - {fileID: 6504186611779074877}
+  - {fileID: 700858418579788321}
+  - {fileID: 8346725165697414020}
+  - {fileID: 9066544525571152116}
 --- !u!1 &3326889992385975791
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 8931702855381315517}
   m_Layer: 0
   m_Name: arc_6 (5)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -576,7 +576,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -592,14 +592,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b0bf92795dd5843a9b8188aa7d77c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroyable: 0
+  isDestroyable: 1
   rb:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6189747330316253438}
+  - {fileID: 8022224600352950269}
+  - {fileID: 6504186611779074877}
+  - {fileID: 700858418579788321}
+  - {fileID: 8346725165697414020}
+  - {fileID: 9066544525571152116}
 --- !u!1 &3326889992560846570
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 7116429655274319452}
   m_Layer: 0
   m_Name: arc_6 (4)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -741,7 +741,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -759,12 +759,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestroyable: 0
   rb:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6189747330316253438}
+  - {fileID: 8022224600352950269}
+  - {fileID: 6504186611779074877}
+  - {fileID: 700858418579788321}
+  - {fileID: 8346725165697414020}
+  - {fileID: 9066544525571152116}
 --- !u!1 &3326889992789804558
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +970,7 @@ GameObject:
   - component: {fileID: 8092173042739288758}
   m_Layer: 0
   m_Name: arc_6 (1)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1002,7 +1002,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1020,9 +1020,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestroyable: 0
   rb:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6189747330316253438}
+  - {fileID: 8022224600352950269}
+  - {fileID: 6504186611779074877}
+  - {fileID: 700858418579788321}
+  - {fileID: 8346725165697414020}
+  - {fileID: 9066544525571152116}

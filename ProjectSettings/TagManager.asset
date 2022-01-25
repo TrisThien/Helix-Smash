@@ -7,6 +7,7 @@ TagManager:
   - Pie
   - LastRing
   - Ring
+  - Destroyable
   layers:
   - Default
   - TransparentFX

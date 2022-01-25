@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4293167146803205465}
   m_Layer: 0
   m_Name: arc_6 (2)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 7243790473059033882}
   m_Layer: 0
   m_Name: arc_6 (4)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -342,7 +342,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 7353844620062168972}
   m_Layer: 0
   m_Name: arc_6 (1)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,7 +411,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 925515465255416841}
   m_Layer: 0
   m_Name: arc_6 (3)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -768,7 +768,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 5817070271753195195}
   m_Layer: 0
   m_Name: arc_6
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -837,7 +837,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 1884147233163274012}
   m_Layer: 0
   m_Name: arc_6 (5)
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -906,7 +906,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
