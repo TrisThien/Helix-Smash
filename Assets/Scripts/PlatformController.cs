@@ -4,7 +4,7 @@ public class PlatformController : MonoBehaviour
 {
     public int angle;
     private bool _popped;
-    private float _speed = 16.0f;
+    private const float Speed = 16f;
     [SerializeField] private new MeshCollider collider;
     private Vector3 _firstPos;
     private Quaternion _targetQuaternion;
@@ -20,9 +20,9 @@ public class PlatformController : MonoBehaviour
             collider.enabled = false;
             transform.parent = null;
             transform.position = Vector3.MoveTowards(transform.position, transform.position +
-                (transform.rotation.eulerAngles.y > 180 ? Vector3.right : Vector3.left) + transform.up, Time.deltaTime * _speed);
+                (transform.rotation.eulerAngles.y > 180 ? Vector3.right : Vector3.left) + transform.up, Time.deltaTime * Speed);
             
-            transform.rotation = Quaternion.Lerp(transform.rotation, _targetQuaternion, Time.deltaTime * _speed / 2);
+            transform.rotation = Quaternion.Lerp(transform.rotation, _targetQuaternion, Time.deltaTime * Speed / 2);
             
             if (Vector3.Distance(transform.position, _firstPos) >= 10)
             {
@@ -30,7 +30,8 @@ public class PlatformController : MonoBehaviour
             }
         }
     }
-    private void OnBecameInvisible() {
+    private void OnDestroy() 
+    {
         if(_popped)
         {    
             Destroy(this.gameObject);
