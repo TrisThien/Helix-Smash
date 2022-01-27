@@ -9,12 +9,12 @@ public class TowerController : MonoBehaviour
 
     private float _platformHeight = 0.4f;
     private float _platformGap = 0.1f;
-    private float _angleTurn = 6f;
+    private float _angleTurn = 8f;
 
     [SerializeField] private Material destroyable;
     [SerializeField] private Material undestroyable;
 
-    public int floorNumbers = 30;
+    public int floorNumbers;
     private int _lastFloor;
 
     private PlatformController[][] _floors;
@@ -29,6 +29,10 @@ public class TowerController : MonoBehaviour
 
         destroyable.color = Random.ColorHSV(0.5f, 1f, 1f, 1f, 0.5f, 1f);
         undestroyable.color = Random.ColorHSV(0f, 0.5f, 1f, 1f, 0f, 0.5f);
+    }
+    private void FixedUpdate()
+    {
+        transform.Rotate(Vector3.up * _rotateSpeed);
     }
     private void GenerateLevel()
     {
@@ -71,9 +75,5 @@ public class TowerController : MonoBehaviour
         {
             return;
         }
-    }
-    private void FixedUpdate()
-    {
-        transform.Rotate(Vector3.up * _rotateSpeed);
     }
 }

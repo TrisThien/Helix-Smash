@@ -21,34 +21,32 @@ public class GameController : MonoBehaviour
         GameOver = false;
         YouWin = false;
         FurryMode = false;
+
+        FurryImageFill = 0f;
     }
 
     private void Update()
     {
         level.text = "LEVEL: " + _levelNum.ToString();
 
-        furryCircle.fillAmount = BallController.RingCount / 50f;
-        FurryImageFill = furryCircle.fillAmount;
-        furryPanel.SetActive(FurryImageFill > 0);
-        if (FurryImageFill >= 1) FurryImageFill--;
-        
-            if (GameOver)
+        if (FurryMode)
         {
-            if (furryPanel.activeInHierarchy)
-            {
-                furryPanel.SetActive(false);
-            }
+            furryPanel.SetActive(FurryImageFill > 0);
+            furryCircle.fillAmount = BallController.RingCount / 50f;
+            FurryImageFill = furryCircle.fillAmount;
+        }
+
+        if (GameOver)
+        {
             levelPanel.SetActive(false);
             losePanel.SetActive(true);
+            furryPanel.SetActive(false);
         }
         if (YouWin)
         {
-            if (furryPanel.activeInHierarchy)
-            {
-                furryPanel.SetActive(false);
-            }
             levelPanel.SetActive(false);
             winPanel.SetActive(true);
+            furryPanel.SetActive(false);
         }
     }
     public void RestartGame()
@@ -57,7 +55,7 @@ public class GameController : MonoBehaviour
     }
     public void NextGame()
     {
-        _levelNum++;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _levelNum++;
     }
 }

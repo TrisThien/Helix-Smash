@@ -300,7 +300,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198321560017527566, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: startDelay.scalar
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198321560017527566, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.11792451
+      objectReference: {fileID: 0}
+    - target: {fileID: 198321560017527566, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.11792451
       objectReference: {fileID: 0}
     - target: {fileID: 198321560017527566, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: InitialModule.startLifetime.minMaxState
@@ -1480,7 +1488,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'LEVEL: 1'
+  m_Text: 'LEVEL: 0'
 --- !u!114 &1251893385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2229,7 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ae27acf64b53e4eacb212f7874ce47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 2613869986032093909, guid: 8f7b05bf4a039aa428a2fc6c01f99fd3, type: 3}
+  platform: {fileID: 7293188004952472239, guid: b5fbe6f9c08da314bbca1a33129dd3ae, type: 3}
   destroyable: {fileID: 2100000, guid: a816a61cf0a77cd4c83eb59d11bc441b, type: 2}
   undestroyable: {fileID: 2100000, guid: 11cf945cc027bfe49b4203cc8d5e2f61, type: 2}
   floorNumbers: 80

@@ -27,20 +27,23 @@ public class BallController : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().material.color =
             Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
-    private void FixedUpdate()
+    private void Update()
     {
+        if (GameController.FurryImageFill >= 1f && !furryEffect.isPlaying)
+        {
+            furryEffect.Play();
+        }
+        else if (GameController.FurryImageFill <= 0 && furryEffect.isPlaying)
+        {
+            furryEffect.Stop();
+        }
         switch (_currentState)
         {
             case States.Idle:
                 Idle();
-                if (RingCount > 0)
-                {
-                    RingCount--;
-                }
                 break;
             case States.Smash:
                 Smash();
-                RingCount++;
                 break;
             case States.Lose:
                 Lose();
@@ -52,22 +55,20 @@ public class BallController : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+    
     private void Idle()
     {
+        Physics.gravity = new Vector3(0, -25f, 0);
+        
         if (Input.GetMouseButtonDown(0))
         {
             _currentState = States.Smash;
             rigidbody.velocity = Vector3.down * JumpSpeed;
-            GameController.FurryMode = true;
-            if (GameController.FurryImageFill >= 1f)
-            {
-                furryEffect.Play();
-                GameController.FurryMode = true;
-            }
-            else if (GameController.FurryImageFill <= 0)
-            {
-                furryEffect.Stop();
-            }
+        }
+        
+        if (RingCount > 0)
+        {
+            RingCount--;
         }
     }
     private void Smash()
@@ -76,9 +77,12 @@ public class BallController : MonoBehaviour
         {
             _currentState = States.Idle;
         }
+        
+        GameController.FurryMode = true;
+        RingCount++;
 
         if (!Physics.Raycast(transform.position, Vector3.down, out var hit, 0.5f)) return;
-        if (hit.collider.gameObject.CompareTag("Destroyable"))
+        if (hit.collider.gameObject.CompareTag("Destroyable") || GameController.FurryImageFill >= 1f)
         {
             Physics.IgnoreCollision(hit.collider, GetComponent<Collider>());
             tower.PopFloors();
@@ -91,29 +95,25 @@ public class BallController : MonoBehaviour
         {
             _currentState = States.Win;
         }
-        
-        if (GameController.FurryMode == true && hit.collider.gameObject.CompareTag("Destroyable") && 
-                                       hit.collider.gameObject.CompareTag("Undestroyable"))
-        {
-            Physics.IgnoreCollision(hit.collider, GetComponent<Collider>());
-            tower.PopFloors();
-        }
     }
     private void Lose()
     {
-        GameController.GameOver = true;
-    }
-    private void Win()
-    {
-        GameController.YouWin = true;
         if (furryEffect.isPlaying)
         {
             furryEffect.Stop();
         }
+        GameController.GameOver = true;
+    }
+    private void Win()
+    {
+        if (furryEffect.isPlaying)
+        {
+            furryEffect.Stop();
+        }
+        GameController.YouWin = true;
     }
     private void OnCollisionEnter(Collision collision)
     {
         rigidbody.velocity = Vector3.up * JumpSpeed;
-        Physics.gravity = new Vector3(0, -25f, 0);
     }
 }
