@@ -8,7 +8,7 @@ public class TowerController : MonoBehaviour
     [SerializeField] private PlatformController platform;
 
     private float _platformHeight = 0.4f;
-    private float _platformGap = 0.1f;
+    private float _platformGap = 0.2f;
     private float _angleTurn = 8f;
 
     [SerializeField] private Material destroyable;
@@ -28,7 +28,7 @@ public class TowerController : MonoBehaviour
         GenerateLevel();
 
         destroyable.color = Random.ColorHSV(0.5f, 1f, 1f, 1f, 0.5f, 1f);
-        undestroyable.color = Random.ColorHSV(0f, 0.5f, 1f, 1f, 0f, 0.5f);
+        undestroyable.color = Color.black;
     }
     private void FixedUpdate()
     {

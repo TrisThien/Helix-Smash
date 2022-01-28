@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Image furryCircle;
     public static float FurryImageFill;
+    
     private void Start()
     {
         GameOver = false;
@@ -25,7 +26,7 @@ public class GameController : MonoBehaviour
         FurryImageFill = 0f;
     }
 
-    private void Update()
+    private void Update() 
     {
         level.text = "LEVEL: " + _levelNum.ToString();
 
@@ -49,6 +50,17 @@ public class GameController : MonoBehaviour
             furryPanel.SetActive(false);
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

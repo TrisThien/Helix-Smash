@@ -11,14 +11,14 @@ public class BallController : MonoBehaviour
     
     [SerializeField] private ParticleSystem furryEffect;
     
-    private enum States
+    private enum BallStates
     {
         Idle,
         Smash,
         Lose,
         Win
     }
-    private States _currentState = States.Idle;
+    private BallStates _currentBallState = BallStates.Idle;
     
     private void Start()
     {
@@ -37,18 +37,18 @@ public class BallController : MonoBehaviour
         {
             furryEffect.Stop();
         }
-        switch (_currentState)
+        switch (_currentBallState)
         {
-            case States.Idle:
+            case BallStates.Idle:
                 Idle();
                 break;
-            case States.Smash:
+            case BallStates.Smash:
                 Smash();
                 break;
-            case States.Lose:
+            case BallStates.Lose:
                 Lose();
                 break;
-            case States.Win:
+            case BallStates.Win:
                 Win();
                 break;
             default:
@@ -62,7 +62,7 @@ public class BallController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            _currentState = States.Smash;
+            _currentBallState = BallStates.Smash;
             rigidbody.velocity = Vector3.down * JumpSpeed;
         }
         
@@ -75,7 +75,7 @@ public class BallController : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            _currentState = States.Idle;
+            _currentBallState = BallStates.Idle;
         }
         
         GameController.FurryMode = true;
@@ -89,11 +89,11 @@ public class BallController : MonoBehaviour
         }
         else if (hit.collider.gameObject.CompareTag("Undestroyable"))
         {
-            _currentState = States.Lose;
+            _currentBallState = BallStates.Lose;
         }
         else if (hit.collider.gameObject.CompareTag("LastRing"))
         {
-            _currentState = States.Win;
+            _currentBallState = BallStates.Win;
         }
     }
     private void Lose()
