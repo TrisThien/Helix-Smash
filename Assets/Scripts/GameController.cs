@@ -6,8 +6,8 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private Text level;
     private int _levelNum = 1;
-    public static bool GameOver;
-    public static bool YouWin;
+    public static bool LoseGame;
+    public static bool WinGame;
     public static bool FurryMode;
     public GameObject levelPanel;
     public GameObject losePanel;
@@ -16,20 +16,49 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Image furryCircle;
     public static float FurryImageFill;
+
+    // enum GameStates
+    // {
+    //     Idle,
+    //     Smash,
+    //     Furry,
+    //     Win,
+    //     Lose
+    // }
+    //
+    // private GameStates _currentGameState = GameStates.Idle;
     
     private void Start()
     {
-        GameOver = false;
-        YouWin = false;
+        LoseGame = false;
+        WinGame = false;
         FurryMode = false;
 
         FurryImageFill = 0f;
     }
 
-    private void Update() 
+    private void Update()
     {
         level.text = "LEVEL: " + _levelNum.ToString();
 
+        // switch (_currentGameState)
+        // {
+        //     case GameStates.Idle:
+        //         break;
+        //     case GameStates.Smash:
+        //         break;
+        //     case GameStates.Furry:
+        //         break;
+        //     case GameStates.Win:
+        //         break;
+        //     case GameStates.Lose:
+        //         break;
+        //     default:
+        //         throw new ArgumentOutOfRangeException();
+        // }
+        
+        
+        
         if (FurryMode)
         {
             furryPanel.SetActive(FurryImageFill > 0);
@@ -37,37 +66,73 @@ public class GameController : MonoBehaviour
             FurryImageFill = furryCircle.fillAmount;
         }
 
-        if (GameOver)
+        if (LoseGame)
         {
             levelPanel.SetActive(false);
             losePanel.SetActive(true);
             furryPanel.SetActive(false);
         }
-        if (YouWin)
+        if (WinGame)
         {
             levelPanel.SetActive(false);
             winPanel.SetActive(true);
             furryPanel.SetActive(false);
         }
     }
+
+    // private void ChangeState(GameStates newState)
+    // {
+    //     if (newState == _currentGameState) return;
+    //     ExitCurrentState();
+    //     _currentGameState = newState;
+    //     EnterNewState();
+    // }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    // private void EnterNewState()
+    // {
+    //     switch (_currentGameState)
+    //     {
+    //         case GameStates.Idle:
+    //             break;
+    //         case GameStates.Smash:
+    //             break;
+    //         case GameStates.Furry:
+    //             break;
+    //         case GameStates.Win:
+    //             break;
+    //         case GameStates.Lose:
+    //             break;
+    //         default:
+    //             throw new ArgumentOutOfRangeException();
+    //     }
+    // }
+    //
+    // private void ExitCurrentState()
+    // {
+    //     switch (_currentGameState)
+    //     {
+    //         case GameStates.Idle:
+    //             break;
+    //         case GameStates.Smash:
+    //             break;
+    //         case GameStates.Furry:
+    //             break;
+    //         case GameStates.Win:
+    //             break;
+    //         case GameStates.Lose:
+    //             break;
+    //         default:
+    //             throw new ArgumentOutOfRangeException();
+    //     }
+    // }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void NextGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         _levelNum++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

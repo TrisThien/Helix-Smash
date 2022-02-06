@@ -3,30 +3,30 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class TowerController : MonoBehaviour
 {
-    private float _rotateSpeed = 2f;
-
+    private float _rotateSpeed = 2.3f;
+    
     [SerializeField] private PlatformController platform;
-
+    
     private float _platformHeight = 0.4f;
     private float _platformGap = 0.2f;
-    private float _angleTurn = 8f;
-
+    private float _angleTurn = 9.2f;
+    
     [SerializeField] private Material destroyable;
     [SerializeField] private Material undestroyable;
-
+    
     public int floorNumbers;
     private int _lastFloor;
-
+    
     private PlatformController[][] _floors;
     private void Start()
     {
         gameObject.GetComponent<MeshRenderer>().material.color = 
             Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-
+    
         _floors = new PlatformController[floorNumbers][];
         _lastFloor = floorNumbers - 1;
         GenerateLevel();
-
+    
         destroyable.color = Random.ColorHSV(0.5f, 1f, 1f, 1f, 0.5f, 1f);
         undestroyable.color = Color.black;
     }
@@ -39,13 +39,13 @@ public class TowerController : MonoBehaviour
         for (int i = 0; i < floorNumbers; i++)
         {
             _floors[i] = new PlatformController[360 / platform.angle];
-
+    
             for (int angle = platform.angle; angle <= 360; angle += platform.angle)
             {
                 PlatformController p = Instantiate(platform, transform.position+new Vector3(0, (_platformHeight + _platformGap) * i, 0),
                     Quaternion.Euler(0, angle + _angleTurn * i, 0));
                 p.transform.parent = this.transform;
-
+    
                 if (platform.angle == angle)
                 {
                     p.GetComponent<MeshRenderer>().material = destroyable;
@@ -56,7 +56,7 @@ public class TowerController : MonoBehaviour
                     p.GetComponent<MeshRenderer>().material = undestroyable;
                     p.gameObject.tag = "Undestroyable";
                 }
-
+    
                 _floors[i][(angle / platform.angle) - 1] = p;
             }
         }

@@ -15,6 +15,7 @@ public class BallController : MonoBehaviour
     {
         Idle,
         Smash,
+        Furry,
         Lose,
         Win
     }
@@ -22,6 +23,7 @@ public class BallController : MonoBehaviour
     
     private void Start()
     {
+        Physics.gravity = new Vector3(0, -25f, 0);
         furryEffect.Stop();
         RingCount = 0f;
         gameObject.GetComponent<MeshRenderer>().material.color =
@@ -37,80 +39,107 @@ public class BallController : MonoBehaviour
         {
             furryEffect.Stop();
         }
+        
         switch (_currentBallState)
         {
             case BallStates.Idle:
-                Idle();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    RingCount++;
+                    ChangeState(BallStates.Smash);
+                }
                 break;
             case BallStates.Smash:
-                Smash();
+                if (Input.GetMouseButtonUp(0))
+                {
+                    RingCount--;
+                    ChangeState(BallStates.Idle);
+                }
+                if (RingCount >= 50)
+                {
+                    RingCount = 50;
+                    ChangeState(BallStates.Furry); 
+                }
+                
+                rigidbody.velocity = Vector3.down * JumpSpeed;
+
+                if (!Physics.Raycast(transform.position, Vector3.down, out var hit, 0.5f)) return;
+                if (hit.collider.gameObject.CompareTag("Destroyable"))
+                {
+                    Physics.IgnoreCollision(hit.collider, GetComponent<Collider>());
+                    tower.PopFloors();
+                }
+                else if (hit.collider.gameObject.CompareTag("Undestroyable"))
+                {
+                    ChangeState(BallStates.Lose);
+                }
+                else if (hit.collider.gameObject.CompareTag("LastRing"))
+                {
+                    ChangeState(BallStates.Win);
+                }
+                break;
+            case BallStates.Furry:
+                if (!Physics.Raycast(transform.position, Vector3.down, out var furryhit, 0.5f)) return;
+                Physics.IgnoreCollision(furryhit.collider, GetComponent<Collider>());
+                tower.PopFloors();
                 break;
             case BallStates.Lose:
-                Lose();
+                GameController.LoseGame = true;
                 break;
             case BallStates.Win:
-                Win();
+                GameController.WinGame = true;
+                break;
+            
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+    private void ChangeState(BallStates newState)
+    {
+        if (newState == _currentBallState) return;
+        ExitCurrentState();
+        _currentBallState = newState;
+        EnterNewState();
+    }
+
+    private void EnterNewState()
+    {
+        switch (_currentBallState)
+        {
+            case BallStates.Idle:
+                break;
+            case BallStates.Smash:
+                break;
+            case BallStates.Furry:
+                //if(!furryEffect.isPlaying) furryEffect.Play();
+                break;
+            case BallStates.Win:
+                //if(furryEffect.isPlaying) furryEffect.Stop();
+                break;
+            case BallStates.Lose:
+                //if(furryEffect.isPlaying) furryEffect.Stop();
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
     }
-    
-    private void Idle()
+    private void ExitCurrentState()
     {
-        Physics.gravity = new Vector3(0, -25f, 0);
-        
-        if (Input.GetMouseButtonDown(0))
+        switch (_currentBallState)
         {
-            _currentBallState = BallStates.Smash;
-            rigidbody.velocity = Vector3.down * JumpSpeed;
+            case BallStates.Idle:
+                break;
+            case BallStates.Smash:
+                break;
+            case BallStates.Furry:
+                break;
+            case BallStates.Win:
+                break;
+            case BallStates.Lose:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
-        
-        if (RingCount > 0)
-        {
-            RingCount--;
-        }
-    }
-    private void Smash()
-    {
-        if (Input.GetMouseButtonUp(0))
-        {
-            _currentBallState = BallStates.Idle;
-        }
-        
-        GameController.FurryMode = true;
-        RingCount++;
-
-        if (!Physics.Raycast(transform.position, Vector3.down, out var hit, 0.5f)) return;
-        if (hit.collider.gameObject.CompareTag("Destroyable") || GameController.FurryImageFill >= 1f)
-        {
-            Physics.IgnoreCollision(hit.collider, GetComponent<Collider>());
-            tower.PopFloors();
-        }
-        else if (hit.collider.gameObject.CompareTag("Undestroyable"))
-        {
-            _currentBallState = BallStates.Lose;
-        }
-        else if (hit.collider.gameObject.CompareTag("LastRing"))
-        {
-            _currentBallState = BallStates.Win;
-        }
-    }
-    private void Lose()
-    {
-        if (furryEffect.isPlaying)
-        {
-            furryEffect.Stop();
-        }
-        GameController.GameOver = true;
-    }
-    private void Win()
-    {
-        if (furryEffect.isPlaying)
-        {
-            furryEffect.Stop();
-        }
-        GameController.YouWin = true;
     }
     private void OnCollisionEnter(Collision collision)
     {
