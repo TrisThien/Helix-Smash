@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        level.text = "LEVEL: " + _levelNum.ToString();
+        level.text = "LEVEL: " + (SceneManager.GetActiveScene().buildIndex+1);
 
         // switch (_currentGameState)
         // {
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
         if (FurryMode)
         {
             furryPanel.SetActive(FurryImageFill > 0);
-            furryCircle.fillAmount = BallController.RingCount / 100f;
+            furryCircle.fillAmount = BallController.RingCount / 50f;
             FurryImageFill = furryCircle.fillAmount;
         }
 
@@ -132,7 +132,6 @@ public class GameController : MonoBehaviour
     }
     public void NextGame()
     {
-        _levelNum++;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

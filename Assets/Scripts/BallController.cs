@@ -71,16 +71,16 @@ public class BallController : MonoBehaviour
                     //RingCount--;
                     ChangeState(BallStates.Idle);
                 }
-                if (RingCount >= 100)
+                if (RingCount >= 50)
                 {
-                    RingCount = 100;
+                    RingCount = 50;
                     ChangeState(BallStates.Furry); 
                 }
                 
                 rigidbody.velocity = Vector3.down * JumpSpeed;
 
                 if (!Physics.Raycast(transform.position, Vector3.down, out var hit, 0.5f)) return;
-                if (hit.collider.gameObject.CompareTag("Destroyable"))
+                if (!hit.collider.gameObject.CompareTag("Undestroyable") && !hit.collider.gameObject.CompareTag("LastRing"))
                 {
                     Physics.IgnoreCollision(hit.collider, GetComponent<Collider>());
                     tower.PopFloors();
@@ -90,8 +90,8 @@ public class BallController : MonoBehaviour
                     if (_undestroyableTouch == 1)
                     {
                         var scaleSequence = DOTween.Sequence();
-                        scaleSequence.Append(hit.collider.transform.DOScale(1.5f, 0.1f))
-                            .Append(hit.collider.transform.DOScale(1, 0.1f));
+                        scaleSequence.Append(hit.collider.transform.DOScaleZ(0.015f, 0.1f))
+                            .Append(hit.collider.transform.DOScaleZ(0.01f, 0.1f));
                         ChangeState(BallStates.Idle);
                         _undestroyableTouch--;
                     }
@@ -103,7 +103,6 @@ public class BallController : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.CompareTag("LastRing"))
                 {
-                    //Time.timeScale = 0;
                     ChangeState(BallStates.Win);
                 }
                 break;
@@ -121,13 +120,14 @@ public class BallController : MonoBehaviour
                     ChangeState(BallStates.Smash);
                 }
                 
-                if (!Physics.Raycast(transform.position, Vector3.down, out var furryhit, 0.5f)) return;
+                if (!Physics.Raycast(transform.position, Vector3.down, out var furryhit, 0.5f)
+                && !Input.GetMouseButtonDown(0)) return;
                 Physics.IgnoreCollision(furryhit.collider, GetComponent<Collider>());
                 rigidbody.velocity = Vector3.down * JumpSpeed;
                 tower.PopFloors();
                 if (furryhit.collider.gameObject.CompareTag("LastRing"))
                 {
-                    ChangeState(BallStates.Win);
+                    ChangeState(BallStates.Smash);
                 }
                 break;
             case BallStates.Lose:

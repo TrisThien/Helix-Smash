@@ -6,15 +6,72 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Gameplay.unity
+    path: Assets/Scenes/Gameplay 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Gameplay 1.unity
-    guid: 9006aa7ae7ce460409b8f34919e7c194
-  - enabled: 1
     path: Assets/Scenes/Gameplay 2.unity
-    guid: 62051e859fb57354cba78da70ba7dd02
+    guid: f5f0d8371f4d1ed48850278d281529a0
   - enabled: 1
     path: Assets/Scenes/Gameplay 3.unity
-    guid: fbfb247e63216724ea6c75d0b6af2ef5
+    guid: 1faeac9ffa30ed44bb7f69b0b4f6cfcb
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 4.unity
+    guid: aaabdc2fa18d3174495feda219af70f4
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 5.unity
+    guid: e52ff453118d0e14690e6c6317c087b5
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 6.unity
+    guid: c32bfb5200ecacf44a6ca7f9d0573a8f
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 7.unity
+    guid: 722912a8271300448923b95fffe21960
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 8.unity
+    guid: df2995180f672934b95c51b891267dac
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 9.unity
+    guid: 78bff873e4ace2a4182cc473ffe3ce28
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 10.unity
+    guid: 40b46a31006657f4da7902f5f45da7f6
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 11.unity
+    guid: 87a7674a01226cd4780de1a09233898e
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 12.unity
+    guid: cf1773fec409670409d009309f75309f
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 13.unity
+    guid: c79025440d950564e88fd0fed9a26c46
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 14.unity
+    guid: 7b5adb91c55020a4aacb8f0a9ea31dd3
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 15.unity
+    guid: 16c0a27336216204c9546ceadefa4606
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 16.unity
+    guid: 41b383d9de17e2644a56a2f3b8d80876
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 17.unity
+    guid: caa0e509e25538745a5677d33ef3d15e
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 18.unity
+    guid: e532727aefcd0b8499aea344a075e489
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 19.unity
+    guid: 07f7caa29de7aba4b98814ac36ef4bc9
+  - enabled: 1
+    path: Assets/Scenes/Gameplay 20.unity
+    guid: 2c0d2fdff39b8aa49ae9adc23e768f3a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

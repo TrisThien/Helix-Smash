@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using Random = UnityEngine.Random;
 public class TowerController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class TowerController : MonoBehaviour
     
     private float _platformHeight = 0.4f;
     private float _platformGap = 0.2f;
-    private float _angleTurn = 9.6f; //9.2f
+    private float _angleTurn = 10f; //9.2f
     
     [SerializeField] private Material destroyable;
     [SerializeField] private Material undestroyable;
@@ -36,28 +37,33 @@ public class TowerController : MonoBehaviour
     }
     private void GenerateLevel()
     {
-        for (int i = 0; i < floorNumbers; i++)
+        for (int i = 1; i < floorNumbers; i++)
         {
-            _floors[i] = new PlatformController[360 / platform[Random.Range(0,2)].angle];
+            _floors[i] = new PlatformController[360 / platform[Random.Range(0, platform.Length)].angle];
     
-            for (int angle = platform[Random.Range(0,2)].angle; angle <= 360; angle += platform[Random.Range(0,2)].angle)
+            for (int angle = platform[Random.Range(0, platform.Length)].angle; angle <= 360;
+                angle += platform[Random.Range(0, platform.Length)].angle)
             {
-                PlatformController p = Instantiate(platform[Random.Range(0,2)], transform.position+new Vector3(0, (_platformHeight + _platformGap) * i, 0),
+                PlatformController p = Instantiate(platform[Random.Range(0, platform.Length)], 
+                    transform.position + new Vector3(0, (_platformHeight + _platformGap) * i, 0),
                     Quaternion.Euler(0, angle + _angleTurn * i, 0));
                 p.transform.parent = this.transform;
     
-                if (platform[Random.Range(0,2)].angle == angle)
-                {
-                    p.GetComponent<MeshRenderer>().material = destroyable;
-                    p.gameObject.tag = "Destroyable";
-                }
-                else
-                {
-                    p.GetComponent<MeshRenderer>().material = undestroyable;
-                    p.gameObject.tag = "Undestroyable";
-                }
-    
-                _floors[i][(angle / platform[Random.Range(0,2)].angle) - 1] = p;
+                // if (platform[Random.Range(0, platform.Length)].angle == angle)
+                // {
+                //     p.GetComponent<MeshRenderer>().material = destroyable;
+                //     p.gameObject.tag = "Destroyable";
+                // }
+                // else
+                // {
+                //     p.GetComponent<MeshRenderer>().material = undestroyable;
+                //     p.gameObject.tag = "Undestroyable";
+                // }
+                _floors[i][(angle / platform[Random.Range(0, platform.Length)].angle) - 1] = p;
+
+                var k = Random.Range(0, (angle / platform[Random.Range(0, platform.Length)].angle) - 1);
+                _floors[i][k].GetComponent<MeshRenderer>().material = undestroyable;
+                _floors[i][k].gameObject.tag = "Undestroyable";
             }
         }
     }
@@ -65,7 +71,7 @@ public class TowerController : MonoBehaviour
     {
         try
         {
-            for (int j = 0; j < 360 / platform[Random.Range(0,2)].angle; j++)
+            for (int j = 0; j < 360 / platform[Random.Range(0, platform.Length)].angle; j++)
             {
                 _floors[_lastFloor][j].GetComponent<PlatformController>().Pop();
             }
