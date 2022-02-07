@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
         if (FurryMode)
         {
             furryPanel.SetActive(FurryImageFill > 0);
-            furryCircle.fillAmount = BallController.RingCount / 50f;
+            furryCircle.fillAmount = BallController.RingCount / 100f;
             FurryImageFill = furryCircle.fillAmount;
         }
 

@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P3
       objectReference: {fileID: 0}
+    - target: {fileID: 1253233597250886877, guid: 90510501c45d71f4099932cb7eef7141, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a816a61cf0a77cd4c83eb59d11bc441b, type: 2}
     - target: {fileID: 3342841284385244449, guid: 90510501c45d71f4099932cb7eef7141, type: 3}
       propertyPath: angle
       value: 90

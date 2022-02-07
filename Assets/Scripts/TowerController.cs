@@ -3,13 +3,13 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class TowerController : MonoBehaviour
 {
-    private float _rotateSpeed = 2.3f;
+    private float _rotateSpeed = 2.5f;
     
-    [SerializeField] private PlatformController platform;
+    [SerializeField] private PlatformController[] platform;
     
     private float _platformHeight = 0.4f;
     private float _platformGap = 0.2f;
-    private float _angleTurn = 9.2f;
+    private float _angleTurn = 9.6f; //9.2f
     
     [SerializeField] private Material destroyable;
     [SerializeField] private Material undestroyable;
@@ -38,15 +38,15 @@ public class TowerController : MonoBehaviour
     {
         for (int i = 0; i < floorNumbers; i++)
         {
-            _floors[i] = new PlatformController[360 / platform.angle];
+            _floors[i] = new PlatformController[360 / platform[Random.Range(0,2)].angle];
     
-            for (int angle = platform.angle; angle <= 360; angle += platform.angle)
+            for (int angle = platform[Random.Range(0,2)].angle; angle <= 360; angle += platform[Random.Range(0,2)].angle)
             {
-                PlatformController p = Instantiate(platform, transform.position+new Vector3(0, (_platformHeight + _platformGap) * i, 0),
+                PlatformController p = Instantiate(platform[Random.Range(0,2)], transform.position+new Vector3(0, (_platformHeight + _platformGap) * i, 0),
                     Quaternion.Euler(0, angle + _angleTurn * i, 0));
                 p.transform.parent = this.transform;
     
-                if (platform.angle == angle)
+                if (platform[Random.Range(0,2)].angle == angle)
                 {
                     p.GetComponent<MeshRenderer>().material = destroyable;
                     p.gameObject.tag = "Destroyable";
@@ -57,7 +57,7 @@ public class TowerController : MonoBehaviour
                     p.gameObject.tag = "Undestroyable";
                 }
     
-                _floors[i][(angle / platform.angle) - 1] = p;
+                _floors[i][(angle / platform[Random.Range(0,2)].angle) - 1] = p;
             }
         }
     }
@@ -65,7 +65,7 @@ public class TowerController : MonoBehaviour
     {
         try
         {
-            for (int j = 0; j < 360 / platform.angle; j++)
+            for (int j = 0; j < 360 / platform[Random.Range(0,2)].angle; j++)
             {
                 _floors[_lastFloor][j].GetComponent<PlatformController>().Pop();
             }
