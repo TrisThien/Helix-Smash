@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
-  jumpSpeed: 7
   tower: {fileID: 0}
-  isPlayed: 0
-  ringCount: 0
+  furryEffect: {fileID: 0}
+  explodeEffect: {fileID: 3556802207639168856, guid: 0201266f0d3eaef45804d3b9e21983e7, type: 3}

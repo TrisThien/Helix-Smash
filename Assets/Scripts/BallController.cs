@@ -29,7 +29,6 @@ public class BallController : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
-        explodeEffect.Stop();
         Physics.gravity = new Vector3(0, -25f, 0);
         RingCount = 0;
         gameObject.GetComponent<MeshRenderer>().material.color =

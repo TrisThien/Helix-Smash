@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     public static float FurryImageFill;
     private enum GameStates
     {
-        Idle, Furry, Win, Lose
+        Idle, Smash, Win, Lose
     }
     private GameStates _currentGameState = GameStates.Idle;
     private void Start()
@@ -37,9 +37,9 @@ public class GameController : MonoBehaviour
         switch (_currentGameState)
         {
             case GameStates.Idle:
-                if(FurryMode) ChangeState(GameStates.Furry);
+                if(FurryMode) ChangeState(GameStates.Smash);
                 break;
-            case GameStates.Furry:
+            case GameStates.Smash:
                 furryPanel.SetActive(FurryImageFill > 0);
                 furryCircle.fillAmount = BallController.RingCount / 100f;
                 FurryImageFill = furryCircle.fillAmount;
@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
         {
             case GameStates.Idle:
                 break;
-            case GameStates.Furry:
+            case GameStates.Smash:
                 break;
             case GameStates.Win:
                 break;
@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
         {
             case GameStates.Idle:
                 break;
-            case GameStates.Furry:
+            case GameStates.Smash:
                 break;
             case GameStates.Win:
                 break;
