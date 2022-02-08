@@ -1,7 +1,9 @@
 using System;
+using System.Security.Cryptography;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using DG.Tweening;
+using TMPro;
 
 public class BallController : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class BallController : MonoBehaviour
     private int _undestroyableTouch = 1;
     
     [SerializeField] private ParticleSystem furryEffect;
-    
+    [SerializeField] private ParticleSystem explodeEffect;
     private enum BallStates
     {
         Idle,
@@ -26,7 +28,8 @@ public class BallController : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        
+
+        explodeEffect.Stop();
         Physics.gravity = new Vector3(0, -25f, 0);
         RingCount = 0;
         gameObject.GetComponent<MeshRenderer>().material.color =
@@ -84,7 +87,7 @@ public class BallController : MonoBehaviour
                     }
                     else
                     {
-                        ChangeState(BallStates.Lose);    
+                        ChangeState(BallStates.Lose);
                     }
                 }
                 else if (hit.collider.gameObject.CompareTag("LastRing"))
@@ -127,6 +130,8 @@ public class BallController : MonoBehaviour
                 break;
             case BallStates.Lose:
                 GameController.LoseGame = true;
+                gameObject.SetActive(false);
+                Instantiate(explodeEffect, transform.position, transform.rotation);
                 break;
             case BallStates.Win:
                 GameController.WinGame = true;

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private Text level;
-    //private int _levelNum = 1;
     public static bool LoseGame;
     public static bool WinGame;
     public static bool FurryMode;
@@ -17,7 +16,6 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Image furryCircle;
     public static float FurryImageFill;
-
     private enum GameStates
     {
         Idle, Furry, Win, Lose
@@ -62,19 +60,6 @@ public class GameController : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        // if (FurryMode)
-        // {
-        //     
-        // }
-        //
-        // if (LoseGame)
-        // {
-        //     
-        // }
-        // if (WinGame)
-        // {
-        //     
-        // }
     }
     private void ChangeState(GameStates newState)
     {
