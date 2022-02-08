@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 using Random = UnityEngine.Random;
 public class TowerController : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class TowerController : MonoBehaviour
     
     private float _platformHeight = 0.4f;
     private float _platformGap = 0.2f;
-    private float _angleTurn = 10f; //9.2f
+    private float _angleTurn = 10f;
     
     [SerializeField] private Material destroyable;
     [SerializeField] private Material undestroyable;
@@ -48,7 +47,8 @@ public class TowerController : MonoBehaviour
                     transform.position + new Vector3(0, (_platformHeight + _platformGap) * i, 0),
                     Quaternion.Euler(0, angle + _angleTurn * i, 0));
                 p.transform.parent = this.transform;
-    
+                #region material
+
                 // if (platform[Random.Range(0, platform.Length)].angle == angle)
                 // {
                 //     p.GetComponent<MeshRenderer>().material = destroyable;
@@ -59,6 +59,8 @@ public class TowerController : MonoBehaviour
                 //     p.GetComponent<MeshRenderer>().material = undestroyable;
                 //     p.gameObject.tag = "Undestroyable";
                 // }
+
+                #endregion
                 _floors[i][(angle / platform[Random.Range(0, platform.Length)].angle) - 1] = p;
 
                 var k = Random.Range(0, (angle / platform[Random.Range(0, platform.Length)].angle) - 1);
@@ -71,13 +73,18 @@ public class TowerController : MonoBehaviour
     {
         try
         {
-            for (int j = 0; j < 360 / platform[Random.Range(0, platform.Length)].angle; j++)
+            for (int j = 0; j < (360 / platform[Random.Range(0, platform.Length)].angle); j++)
             {
                 _floors[_lastFloor][j].GetComponent<PlatformController>().Pop();
             }
+
             _lastFloor--;
         }
         catch (IndexOutOfRangeException)
+        {
+            return;
+        }
+        catch (NullReferenceException)
         {
             return;
         }

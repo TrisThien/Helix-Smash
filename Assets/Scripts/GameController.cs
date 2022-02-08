@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private Text level;
-    private int _levelNum = 1;
+    //private int _levelNum = 1;
     public static bool LoseGame;
     public static bool WinGame;
     public static bool FurryMode;
@@ -16,18 +16,6 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Image furryCircle;
     public static float FurryImageFill;
-
-    // enum GameStates
-    // {
-    //     Idle,
-    //     Smash,
-    //     Furry,
-    //     Win,
-    //     Lose
-    // }
-    //
-    // private GameStates _currentGameState = GameStates.Idle;
-    
     private void Start()
     {
         LoseGame = false;
@@ -40,29 +28,11 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         level.text = "LEVEL: " + (SceneManager.GetActiveScene().buildIndex+1);
-
-        // switch (_currentGameState)
-        // {
-        //     case GameStates.Idle:
-        //         break;
-        //     case GameStates.Smash:
-        //         break;
-        //     case GameStates.Furry:
-        //         break;
-        //     case GameStates.Win:
-        //         break;
-        //     case GameStates.Lose:
-        //         break;
-        //     default:
-        //         throw new ArgumentOutOfRangeException();
-        // }
-        
-        
         
         if (FurryMode)
         {
             furryPanel.SetActive(FurryImageFill > 0);
-            furryCircle.fillAmount = BallController.RingCount / 50f;
+            furryCircle.fillAmount = BallController.RingCount / 100f;
             FurryImageFill = furryCircle.fillAmount;
         }
 
@@ -79,53 +49,6 @@ public class GameController : MonoBehaviour
             furryPanel.SetActive(false);
         }
     }
-
-    // private void ChangeState(GameStates newState)
-    // {
-    //     if (newState == _currentGameState) return;
-    //     ExitCurrentState();
-    //     _currentGameState = newState;
-    //     EnterNewState();
-    // }
-    
-    // private void EnterNewState()
-    // {
-    //     switch (_currentGameState)
-    //     {
-    //         case GameStates.Idle:
-    //             break;
-    //         case GameStates.Smash:
-    //             break;
-    //         case GameStates.Furry:
-    //             break;
-    //         case GameStates.Win:
-    //             break;
-    //         case GameStates.Lose:
-    //             break;
-    //         default:
-    //             throw new ArgumentOutOfRangeException();
-    //     }
-    // }
-    //
-    // private void ExitCurrentState()
-    // {
-    //     switch (_currentGameState)
-    //     {
-    //         case GameStates.Idle:
-    //             break;
-    //         case GameStates.Smash:
-    //             break;
-    //         case GameStates.Furry:
-    //             break;
-    //         case GameStates.Win:
-    //             break;
-    //         case GameStates.Lose:
-    //             break;
-    //         default:
-    //             throw new ArgumentOutOfRangeException();
-    //     }
-    // }
-
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

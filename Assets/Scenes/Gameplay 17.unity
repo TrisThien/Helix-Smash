@@ -2584,6 +2584,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7197762682510369224, guid: 075fb5bdccd66ae4ea09266edddee3bd, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197762682510369224, guid: 075fb5bdccd66ae4ea09266edddee3bd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197762682510369224, guid: 075fb5bdccd66ae4ea09266edddee3bd, type: 3}
+      propertyPath: m_CookingOptions
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7235365383799753843, guid: 075fb5bdccd66ae4ea09266edddee3bd, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 using DG.Tweening;
 
@@ -28,8 +27,6 @@ public class BallController : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         
-        Time.timeScale = 1;
-
         Physics.gravity = new Vector3(0, -25f, 0);
         RingCount = 0;
         gameObject.GetComponent<MeshRenderer>().material.color =
@@ -37,15 +34,6 @@ public class BallController : MonoBehaviour
     }
     private void Update()
     {
-        if (GameController.FurryImageFill >= 1f && !furryEffect.isPlaying)
-        {
-            furryEffect.Play();
-        }
-        else if (GameController.FurryImageFill <= 0 && furryEffect.isPlaying)
-        {
-            furryEffect.Stop();
-        }
-        
         switch (_currentBallState)
         {
             case BallStates.Idle:
@@ -68,12 +56,11 @@ public class BallController : MonoBehaviour
 
                 if (Input.GetMouseButtonUp(0))
                 {
-                    //RingCount--;
                     ChangeState(BallStates.Idle);
                 }
-                if (RingCount >= 50)
+                if (RingCount >= 100)
                 {
-                    RingCount = 50;
+                    RingCount = 100;
                     ChangeState(BallStates.Furry); 
                 }
                 
@@ -97,7 +84,6 @@ public class BallController : MonoBehaviour
                     }
                     else
                     {
-                        //Time.timeScale = 0;
                         ChangeState(BallStates.Lose);    
                     }
                 }
@@ -108,11 +94,20 @@ public class BallController : MonoBehaviour
                 break;
             case BallStates.Furry:
                 RingCount--;
-
+                
+                if (GameController.FurryImageFill >= 1f && !furryEffect.isPlaying)
+                {
+                    furryEffect.Play();
+                }
+                else if (GameController.FurryImageFill <= 0 && furryEffect.isPlaying)
+                {
+                    furryEffect.Stop();
+                }
+                
                 if (Input.GetMouseButtonUp(0))
                 {
-                    //RingCount--;
                     ChangeState(BallStates.Idle);
+                    if(furryEffect.isPlaying) furryEffect.Stop();
                 }
                 
                 if (GameController.FurryImageFill == 0)

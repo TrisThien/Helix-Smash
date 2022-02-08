@@ -23,7 +23,7 @@ public class PlatformController : MonoBehaviour
             
             if (Vector3.Distance(transform.position, _firstPos) >= 10f)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
