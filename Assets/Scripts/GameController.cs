@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +17,12 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Image furryCircle;
     public static float FurryImageFill;
+
+    private enum GameStates
+    {
+        Idle, Furry, Win, Lose
+    }
+    private GameStates _currentGameState = GameStates.Idle;
     private void Start()
     {
         LoseGame = false;
@@ -29,24 +36,83 @@ public class GameController : MonoBehaviour
     {
         level.text = "LEVEL: " + (SceneManager.GetActiveScene().buildIndex+1);
         
-        if (FurryMode)
+        switch (_currentGameState)
         {
-            furryPanel.SetActive(FurryImageFill > 0);
-            furryCircle.fillAmount = BallController.RingCount / 100f;
-            FurryImageFill = furryCircle.fillAmount;
+            case GameStates.Idle:
+                if(FurryMode) ChangeState(GameStates.Furry);
+                break;
+            case GameStates.Furry:
+                furryPanel.SetActive(FurryImageFill > 0);
+                furryCircle.fillAmount = BallController.RingCount / 100f;
+                FurryImageFill = furryCircle.fillAmount;
+                
+                if(WinGame) ChangeState(GameStates.Win);
+                if(LoseGame) ChangeState(GameStates.Lose);
+                break;
+            case GameStates.Win:
+                levelPanel.SetActive(false);
+                winPanel.SetActive(true);
+                furryPanel.SetActive(false);
+                break;
+            case GameStates.Lose:
+                levelPanel.SetActive(false);
+                losePanel.SetActive(true);
+                furryPanel.SetActive(false);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
-
-        if (LoseGame)
+        // if (FurryMode)
+        // {
+        //     
+        // }
+        //
+        // if (LoseGame)
+        // {
+        //     
+        // }
+        // if (WinGame)
+        // {
+        //     
+        // }
+    }
+    private void ChangeState(GameStates newState)
+    {
+        if (newState == _currentGameState) return;
+        ExitCurrentState();
+        _currentGameState = newState;
+        EnterNewState();
+    }
+    private void EnterNewState()
+    {
+        switch (_currentGameState)
         {
-            levelPanel.SetActive(false);
-            losePanel.SetActive(true);
-            furryPanel.SetActive(false);
+            case GameStates.Idle:
+                break;
+            case GameStates.Furry:
+                break;
+            case GameStates.Win:
+                break;
+            case GameStates.Lose:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
-        if (WinGame)
+    }
+    private void ExitCurrentState()
+    {
+        switch (_currentGameState)
         {
-            levelPanel.SetActive(false);
-            winPanel.SetActive(true);
-            furryPanel.SetActive(false);
+            case GameStates.Idle:
+                break;
+            case GameStates.Furry:
+                break;
+            case GameStates.Win:
+                break;
+            case GameStates.Lose:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
     public void RestartGame()
