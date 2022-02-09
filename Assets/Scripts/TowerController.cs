@@ -3,7 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class TowerController : MonoBehaviour
 {
-    private float _rotateSpeed = 2.5f;
+    private float _rotateSpeed = 2.6f;
     
     [SerializeField] private PlatformController[] platform;
     

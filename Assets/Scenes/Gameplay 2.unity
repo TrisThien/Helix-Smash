@@ -2307,8 +2307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform:
-  - {fileID: 9201767408997257469, guid: de0aeb867a4ddd64fb7db7869018fb9d, type: 3}
-  - {fileID: 1965512062161154485, guid: 91e03efae73f4194c8a05c68754a6c9c, type: 3}
+  - {fileID: 2756013195392575677, guid: d87196f44cf590d488cdef3e34fb9341, type: 3}
+  - {fileID: 47393319307959116, guid: 9de52870fc2e5f14abf443466b2c197b, type: 3}
   destroyable: {fileID: 2100000, guid: a816a61cf0a77cd4c83eb59d11bc441b, type: 2}
   undestroyable: {fileID: 2100000, guid: 11cf945cc027bfe49b4203cc8d5e2f61, type: 2}
   floorNumbers: 60
