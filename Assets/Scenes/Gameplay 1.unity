@@ -2306,7 +2306,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ae27acf64b53e4eacb212f7874ce47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform:
+  platforms:
+  - {fileID: 7446416669659113569, guid: a943100cceec0e047816b3671c12a19a, type: 3}
+  - {fileID: 7446416669659113569, guid: a943100cceec0e047816b3671c12a19a, type: 3}
   - {fileID: 7446416669659113569, guid: a943100cceec0e047816b3671c12a19a, type: 3}
   destroyable: {fileID: 2100000, guid: a816a61cf0a77cd4c83eb59d11bc441b, type: 2}
   undestroyable: {fileID: 2100000, guid: 11cf945cc027bfe49b4203cc8d5e2f61, type: 2}

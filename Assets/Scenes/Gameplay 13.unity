@@ -1082,7 +1082,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.13648504, y: 0, z: 0, w: 0.9906422}
-  m_LocalPosition: {x: 0, y: 37.63, z: -10.84}
+  m_LocalPosition: {x: 0, y: 37, z: -10.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2306,10 +2306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ae27acf64b53e4eacb212f7874ce47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform:
-  - {fileID: 7766555273906421031, guid: 1d090f758ffff234ba32747df883ff35, type: 3}
-  - {fileID: 2130192097292770083, guid: fdf23b3d07da360469a567a5a0e66443, type: 3}
-  - {fileID: 7193080625451071195, guid: ef90a40606f035d4b88fcccee8e046cc, type: 3}
+  platforms:
+  - {fileID: 730808038977729683, guid: af9fafba16ac7c54cb32a8f69ef9a4b4, type: 3}
+  - {fileID: 5338589674344613860, guid: dfef9fe432a82b54290c10a3f17b42fe, type: 3}
+  - {fileID: 4911366026248010571, guid: 852533fe3b17a064e9362bef1d5dc748, type: 3}
   destroyable: {fileID: 2100000, guid: a816a61cf0a77cd4c83eb59d11bc441b, type: 2}
   undestroyable: {fileID: 2100000, guid: 11cf945cc027bfe49b4203cc8d5e2f61, type: 2}
   floorNumbers: 60
